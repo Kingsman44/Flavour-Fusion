@@ -28,10 +28,11 @@
   </script>
   <style>
     body.dark-theme {
-      background-color: #333; /* Update with your dark theme color */
-      color: #fff; /* Update with your dark theme color */
+      background-color: #333;
+      /* Update with your dark theme color */
+      color: #fff;
+      /* Update with your dark theme color */
     }
-   
   </style>
 </head>
 
@@ -61,13 +62,14 @@
             <a href="#sign-in" onClick="clickSignInButton()" class="nav__link sign-in-btn-nav" id="sign-in-btn">Sign
               In</a>
           </li>
-          <li class="nav__item">   <div class="theme-toggle">
-            <li class="nav__item">
-              <button onclick="toggleTheme()" class="theme-toggle-button" id="theme-toggle-button">Dark Theme
-              </button>
-            </li>
-          </div>
-        </ul>
+          <li class="nav__item">
+            <div class="theme-toggle">
+          <li class="nav__item">
+            <button onclick="toggleTheme()" class="theme-toggle-button" id="theme-toggle-button">Dark Theme
+            </button>
+          </li>
+      </div>
+      </ul>
       </div>
 
       <div class="nav__toggle" id="nav-toggle">
@@ -141,7 +143,7 @@
     <section class="home" id="home">
       <div class="home__container bd-container bd-grid">
         <div class="home__img">
-          <img src="./assets/salmon-salad.png" alt="" />
+          <img src="./assets/salmon-salad.png" alt="" class="home_img" data-tilt data-tilt-scale="1.1"/>
         </div>
 
         <div class="home__data">
@@ -173,7 +175,7 @@
         </div>
 
         <div class="landing-s2-main__img">
-          <img src="./assets/healthyhappyfood.jpg" alt="healthy-happy-food" />
+          <img src="./assets/healthyhappyfood.jpg" alt="healthy-happy-food" class="home_img2" data-tilt data-tilt-scale="1.1" />
         </div>
       </div>
     </section>
@@ -324,7 +326,7 @@
     </section>
 
     <section class="track-container-sam" id="track-container-sam">
-      <button id="close-track-section">X</button>
+      <button id="close-track-section"></button>
       <div class="track-top">
         <h1>Order id: <span class="colored">ABCD0123</span></h1>
         <div class="track-top-textContent">
@@ -370,19 +372,19 @@
     <section class="order-landing section bd-container" id="order-landing">
       <h2 class="section-title">Orders</h2>
       <div class="order-landing__container bd-grid">
-        <div class="order-landing__data">
+        <div class="order-landing__data" data-tilt data-tilt-scale="1.1">
           <img src="./assets/order-history-image-landing.jpg" alt="history" class="order-landing__img" />
           <h3 class="order-landing__title">See What You've Ordered!</h3>
           <a href="#" class="anorderlink landing-button landing-button-link">Order History</a>
         </div>
 
-        <div class="order-landing__data">
+        <div class="order-landing__data" data-tilt data-tilt-scale="1.1">
           <img src="./assets/new-order-landing.png" alt="" class="order-landing__img" />
           <h3 class="order-landing__title">Order From Us!</h3>
           <a id="order-now-sam" class="landing-button landing-button-link">Order Now</a>
         </div>
 
-        <div class="order-landing__data">
+        <div class="order-landing__data" data-tilt data-tilt-scale="1.1">
           <img src="./assets/track-order-landing.png" alt="" class="order-landing__img" />
           <h3 class="order-landing__title">Already Ordered?</h3>
           <a class="landing-button landing-button-link" id="reveal-track-section">Track Order</a>
@@ -862,7 +864,7 @@
 
 
   <section id="allaboutus">
-    <div class="close-button" id="closeButton">X</div>
+    <div class="close-button" id="closeButton"></div>
     <div class="allcontainer">
 
       <h2 class="allh2">About Us</h2>
@@ -960,41 +962,66 @@
   <script src="./javascript/footer.js"></script>
   <script src="./allindex.js"></script>
   <script src="./anorder.js"></script>
+  <script src="vanilla-tilt.js"></script>
 
   <script>
-    function toggleTheme() {
-      const body = document.body;
-      body.classList.toggle('dark-theme');
-    
-      const themeToggleButton = document.getElementById('theme-toggle-button');
-      const header = document.querySelector('header');
-    
-      if (body.classList.contains('dark-theme')) {
-        themeToggleButton.textContent = 'Bright Theme';
-        changeTextColors('white');
-        header.style.color = 'white';  // Change header text color to white
-      } else {
-        themeToggleButton.textContent = 'Dark Theme';
-        changeTextColors('black');
-        header.style.color = 'black';  // Change header text color to black
-      }
+       
+ function toggleTheme() {
+  const body = document.body;
+  body.classList.toggle('dark-theme');
+
+  const themeToggleButton = document.getElementById('theme-toggle-button');
+  const header = document.querySelector('header');
+  const navigation = document.querySelector('.nav');
+  const signInButton = document.querySelector('.sign-in-btn-nav'); // Select sign-in button
+
+  if (body.classList.contains('dark-theme')) {
+    themeToggleButton.textContent = 'Bright Theme';
+    changeTextColors('white');
+    header.style.color = 'white'; // Change header text color to white
+    header.style.backgroundColor = '#333'; // Change header background color to match dark theme
+    navigation.style.backgroundColor = '#333'; // Change navigation background color to match dark theme
+    navigation.style.color = 'white'; // Change navigation text color to white
+    signInButton.style.color = 'white'; // Change sign-in button text color to white
+    signInButton.style.backgroundColor = '#333'; // Change sign-in button background color to black
+  } else {
+    themeToggleButton.textContent = 'Dark Theme';
+    changeTextColors('black');
+    header.style.color = 'black'; // Change header text color to black
+    header.style.backgroundColor = 'white'; // Reset header background color
+    navigation.style.backgroundColor = 'white'; // Reset navigation background color
+    navigation.style.color = 'initial'; // Reset navigation text color
+    signInButton.style.color = 'initial'; // Reset sign-in button text color
+    signInButton.style.backgroundColor = 'white'; // Change sign-in button background color to white
+  }
+}
+
+
+
+function changeTextColors(color) {
+  const allTextElements = document.querySelectorAll('body *');  // Select all elements
+  const navTextElements = document.querySelectorAll('.nav *');  // Select all elements inside navigation
+
+  // Exclude header elements, buttons and sign-in button from color change
+  const headerElements = document.querySelectorAll('header *');
+  const buttonElements = document.querySelectorAll('button');
+  const signInButton = document.querySelector('.sign-in-btn-nav'); // Select sign-in button
+  const elementsToExclude = Array.from(headerElements).concat(Array.from(buttonElements)).concat(signInButton);
+
+  allTextElements.forEach(element => {
+    if (!elementsToExclude.includes(element)) {
+      element.style.color = color;
     }
-      function changeTextColors(color) {
-      const allTextElements = document.querySelectorAll('body *');  // Select all elements
-    
-      // Exclude header elements and buttons from color change
-      const headerElements = document.querySelectorAll('header *');
-      const buttonElements = document.querySelectorAll('button');
-      const elementsToExclude = Array.from(headerElements).concat(Array.from(buttonElements));
-    
-      allTextElements.forEach(element => {
-        if (!elementsToExclude.includes(element)) {
-          element.style.color = color;
-        }
-      });
-    }
-      </script>
-    
+  });
+
+  // Change color of text inside navigation
+  navTextElements.forEach(element => {
+    element.style.color = color;
+  });
+}
+
+  </script>
+
 </body>
 
 </html>
