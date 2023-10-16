@@ -10,6 +10,7 @@
   <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   <link rel="stylesheet" href="./css/allstyle.css">
   <link rel="stylesheet" href="./order.css" />
   <link rel="stylesheet" href="./css/landing.css" />
@@ -64,12 +65,14 @@
           </li>
           <li class="nav__item">
             <div class="theme-toggle">
-          <li class="nav__item">
-            <button onclick="toggleTheme()" class="theme-toggle-button" id="theme-toggle-button">Dark Theme
-            </button>
-          </li>
-      </div>
-      </ul>
+
+              <button onclick="toggleTheme()" class="theme-toggle-button" id="theme-toggle-button">
+                <i class="fas fa-moon"></i>
+              </button>
+            </div>
+          </li>          
+          </div>
+        </ul>
       </div>
 
       <div class="nav__toggle" id="nav-toggle">
@@ -373,7 +376,7 @@
       <h2 class="section-title">Orders</h2>
       <div class="order-landing__container bd-grid">
         <div class="order-landing__data" data-tilt data-tilt-scale="1.1">
-          <img src="./assets/order-history-image-landing.jpg" alt="history" class="order-landing__img" />
+          <img src="./assets/order-history-image-landing.png" alt="history" class="order-landing__img" />
           <h3 class="order-landing__title">See What You've Ordered!</h3>
           <a href="#" class="anorderlink landing-button landing-button-link">Order History</a>
         </div>
